@@ -3,4 +3,4 @@
 # Install dependencies
 apt-get install -y jq
 
-make build push-all
+make push-all

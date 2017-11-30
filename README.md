@@ -25,6 +25,9 @@ docker run --rm -it -v "$(pwd):/usr/src/app" mage/mage bash
 
 You will likely want to build your own custom image for production use.
 
+To build locally, the `Makefile` will require that you have
+[`jq`](https://stedolan.github.io/jq/download/) installed locally.
+
 ```Dockerfile
 FROM mage/mage
 # Add your custom steps here
