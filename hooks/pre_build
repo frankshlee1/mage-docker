@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 echo BUILD_CODE $BUILD_CODE
 echo DOCKER_REPO $DOCKER_REPO
 echo DOCKER_TAG $DOCKER_TAG
@@ -25,9 +26,7 @@ echo "-- env --"
 env
 echo "-- set --"
 set
-echo "-- show images --"
+echo "-- end --"
 
-docker images
-
-echo "-- build --"
-make build
+# Install dependencies
+apt-get install -y jq

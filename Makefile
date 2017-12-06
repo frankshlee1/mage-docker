@@ -1,6 +1,6 @@
 # Name of the image
 #name := mage/mage
-name := frank/mage-docker
+name := frankshlee1/mage-docker
 
 # Default set of version for `make all`
 versions ?= $(shell curl -L -s \
@@ -18,7 +18,9 @@ version := $(latest)
 .PHONY: build-version build release-version git-push push-all release
 
 build-version:
-	docker build -t $(name):$(version) --build-arg=node_version=$(version) .
+	$(if $(findstring alpine,$(version)), \
+	    docker build -t $(name):$(version) --build-arg=node_version=$(version) -f alpine/Dockerfile ., \
+	    docker build -t $(name):$(version) --build-arg=node_version=$(version) -f debian/Dockerfile .)
 	docker tag $(name):$(version) $(name):$(version)
 	test $(version) = $(latest) && docker tag $(name):$(version) $(name):latest || true
 
